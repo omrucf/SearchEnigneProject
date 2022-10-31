@@ -9,19 +9,23 @@ using namespace std;
 struct siteInfo
 {
     string url;
-    vector<string> KeyWords;
+    string KeyWords;
+    int loc, clicks;
 };
 
 struct edge
 {
     siteInfo src, dst;
+    int loc;
 };
+
+typedef vector<siteInfo> sitevec;
 
 class sites
 {
-    vector<vector<siteInfo>> adjList;
+    vector<sitevec> adjList;
 
-    sites(vector<edge> const &, siteInfo);
+    sites(vector<edge> const &, int);
 };
 
 #endif /*WEBPAGE_H*/
