@@ -122,6 +122,8 @@ void screen::createWebGraph()
         {
             secondaryURL = getTillChar(input, ',');
             temp.dst.url = secondaryURL;
+
+            edges.push_back(temp);
         }
     }
 }
@@ -138,5 +140,19 @@ string screen::getTillChar(string &word, char c)
     }
     if (i != word.size())
         word = word.substr(i + 1, word.size() - 1);
+    else
+    {
+        result = word;
+        word = "";
+    }
     return result;
+}
+
+void screen::printEdgesvec()
+{
+    for (auto i = edges.begin(); i != edges.end(); i++)
+    {
+        cout << "source: " << i->src.url << endl
+             << "destination: " << i->dst.url << endl << endl;
+    }
 }

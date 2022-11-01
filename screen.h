@@ -20,6 +20,7 @@ public:
     void printAllSites();
     void startingScreen();
     void createWebGraph();
+    void printEdgesvec();
 
     sitevec getAllSites();
 
