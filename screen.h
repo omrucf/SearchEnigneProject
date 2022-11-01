@@ -9,14 +9,22 @@ class screen
     sitevec history;
     sitevec allsites;
 
+    vector<edge> edges;
+
+    string emptyString;
+
+    // sites webgraph(edge, edges.size());
 public:
+    screen();
     void readSites();
-    void readHistory();
-    void prinHistory();
     void printAllSites();
     void startingScreen();
+    // void createWebGraph();
 
     sitevec getAllSites();
+
+    string getTillChar(string &, char);
+    string getEmptyString();
 };
 
 #endif /*SCREEN_H*/

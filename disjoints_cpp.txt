@@ -1,0 +1,74 @@
+/***********************************************************************\
+Name: Omar Yossuf
+SID: 900212166
+Assignment: #01
+Instructor: Nada Abd-Elsattr
+Course: CSCE 2203
+Section: #01
+Date: Sep 15th, 2022
+\***********************************************************************/
+
+#include "Disjoints.h"
+
+void DisjointsSet::makeSet(vector<int> const &universe)
+{
+    for(int i : universe)
+    {
+        P[i].parent = i;
+        P[i].rank = 1;
+    }
+}
+
+int DisjointsSet::find(int k)
+{
+    if(P[k].parent == k)
+        return k;
+    return(find(P[k].parent));
+}
+
+bool DisjointsSet::Union(int a, int b, int &p)
+{
+    int x = find(a);
+    int y = find(b);
+    
+    if(y == x)
+        return false;
+    else
+    {
+        if(P[x].rank >= P[y].rank)
+        {
+            P[y].parent = x;
+            p = x;
+            P[x].rank += P[y].rank;
+        }
+        else
+        {
+            P[x].parent = y;
+            p = y;
+            P[y].rank += P[x].rank;
+        }
+        return true;
+    }
+}
+
+void DisjointsSet::Union(int a, int b)
+{
+    int x = find(a);
+    int y = find(b);
+    
+    if(y == x)
+        return;
+    else
+    {
+        if(P[x].rank >= P[y].rank)
+        {
+            P[y].parent = x;
+            P[x].rank += P[y].rank;
+        }
+        else
+        {
+            P[x].parent = y;
+            P[y].rank += P[x].rank;
+        }
+    }
+}

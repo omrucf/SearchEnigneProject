@@ -1,5 +1,13 @@
 #include "screen.h"
 
+screen::screen()
+{
+    emptyString = "   ";
+    emptyString[0] = '"';
+    emptyString[1] = ' ';
+    emptyString[2] = '"';
+}
+
 void screen::readSites()
 {
     ifstream in;
@@ -14,24 +22,6 @@ void screen::readSites()
         getline(in, sites.KeyWords);
 
         allsites.push_back(sites);
-    }
-
-    in.close();
-}
-
-void screen::readHistory()
-{
-    ifstream in;
-
-    in.open("history.txt");
-
-    siteInfo sites;
-
-    while (!in.eof())
-    {
-        in >> sites.loc >> sites.url;
-        getline(in, sites.KeyWords);
-        history.push_back(sites);
     }
 
     in.close();
@@ -70,20 +60,24 @@ void screen::startingScreen()
             std::cout << "*INVALID INPUT*\n";
         else if (choice == '1')
         {
-            std::cout << "Search: ";
+            std::cout << "\nSearch: ";
 
             getline(cin >> ws, keywords);
 
             // cin >> keywords;
 
             std::cout << "\nsearch type: ";
-            if (keywords[0] == '"' && keywords[keywords.size() - 1] == '"')
-            {
-                std::cout << "quotations\n";
-            }
-            else if (keywords.find("AND") != string::npos)
+            if (keywords.find(emptyString) != string::npos)
             {
                 std::cout << "AND\n";
+            }
+            else if(keywords.find("OR") != string::npos)
+            {
+                std::cout << "OR\n";
+            }
+            else if(keywords[0] == '"' && keywords[keywords.size() - 1] == '"')
+            {
+                std::cout << "quotations\n";
             }
             else
             {
@@ -100,4 +94,47 @@ void screen::startingScreen()
 sitevec screen::getAllSites()
 {
     return allsites;
+}
+
+// void screen::createWebGraph()
+// {
+//     ifstream in;
+
+//     in.open("webgraph.csv");
+
+//     string mainURL, secondaryURL;
+
+//     string input;
+
+//     int count = 0;
+
+//     edge temp;
+
+//     while (!in.eof())
+//     {
+//        getline(in >> ws, input);
+
+//        mainURL = getTillChar(input, ',');
+//     }
+
+// }
+
+string screen::getTillChar(string &word, char c)
+{
+    string result = "";
+
+    int i;
+
+    for (i = 0; i < word.size() && word[i] != c; i++)
+    {
+        result += word[i];
+    }
+    if(i != word.size())
+        word = word.substr(i + 1, word.size() - 1);
+    return result;
+}
+
+string screen::getEmptyString()
+{
+    return emptyString;
 }

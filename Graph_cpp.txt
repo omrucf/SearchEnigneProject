@@ -1,0 +1,52 @@
+/***********************************************************************\
+Name: Omar Yossuf
+SID: 900212166
+Assignment: #01
+Instructor: Nada Abd-Elsattr
+Course: CSCE 2203
+Section: #01
+Date: Sep 15th, 2022
+\***********************************************************************/
+
+#include <stdio.h>
+#include "Graph.h"
+
+
+Graph::Graph(vector<Edge> const &edges, int n)
+{
+    adjList.resize(n);
+
+    for(auto &edge: edges)
+    {
+        adjList[edge.src].push_back(edge.dst);
+        adjList[edge.dst].push_back(edge.src);
+    }
+}
+
+int Graph::DetectCycle(int n)
+{
+    vector<int> universe;
+    
+    for(int i = 0; i < n; i++)
+        universe.push_back(i);
+    
+    int p, c = 0;
+    
+    DisjointsSet ds;
+    
+    ds.makeSet(universe);
+    
+    for (int i = 0; i < n; i++)
+    {
+        for (int v : adjList[i])
+        {
+            if((i > v) && !ds.Union(i, v, p))
+            {
+                cout << "\nCYCLE FOUND: \nnodes " << i << ", " << v << " and GP " << p << endl;
+                c++;
+            }
+        }
+    }
+    return c;
+}
+

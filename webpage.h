@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -25,7 +26,10 @@ class sites
 {
     vector<sitevec> adjList;
 
-    sites(vector<edge> const &, int);
+public:
+    sites(vector<edge> const&, int);
+
+    // void CreateGraph(vector<edge> &, int);
 };
 
 #endif /*WEBPAGE_H*/

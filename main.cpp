@@ -1,5 +1,6 @@
 #include "screen.h"
 
+
 int main()
 {
     cout << "everything's fine..\n";
@@ -7,6 +8,6 @@ int main()
     screen s;
 
     s.startingScreen();
-
+   
     return 0;
 }
