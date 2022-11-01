@@ -71,11 +71,11 @@ void screen::startingScreen()
             {
                 std::cout << "AND\n";
             }
-            else if(keywords.find("OR") != string::npos)
+            else if (keywords.find("OR") != string::npos)
             {
                 std::cout << "OR\n";
             }
-            else if(keywords[0] == '"' && keywords[keywords.size() - 1] == '"')
+            else if (keywords[0] == '"' && keywords[keywords.size() - 1] == '"')
             {
                 std::cout << "quotations\n";
             }
@@ -96,28 +96,35 @@ sitevec screen::getAllSites()
     return allsites;
 }
 
-// void screen::createWebGraph()
-// {
-//     ifstream in;
+void screen::createWebGraph()
+{
+    ifstream in;
 
-//     in.open("webgraph.csv");
+    in.open("webgraph.csv");
 
-//     string mainURL, secondaryURL;
+    string mainURL, secondaryURL;
 
-//     string input;
+    string input;
 
-//     int count = 0;
+    int count = 0;
 
-//     edge temp;
+    edge temp;
 
-//     while (!in.eof())
-//     {
-//        getline(in >> ws, input);
+    while (!in.eof())
+    {
+        getline(in >> ws, input);
 
-//        mainURL = getTillChar(input, ',');
-//     }
+        mainURL = getTillChar(input, ',');
 
-// }
+        temp.src.url = mainURL;
+
+        while (!input.empty())
+        {
+            secondaryURL = getTillChar(input, ',');
+            temp.dst.url = secondaryURL;
+        }
+    }
+}
 
 string screen::getTillChar(string &word, char c)
 {
@@ -129,12 +136,7 @@ string screen::getTillChar(string &word, char c)
     {
         result += word[i];
     }
-    if(i != word.size())
+    if (i != word.size())
         word = word.substr(i + 1, word.size() - 1);
     return result;
-}
-
-string screen::getEmptyString()
-{
-    return emptyString;
 }

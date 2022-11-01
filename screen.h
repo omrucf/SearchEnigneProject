@@ -19,12 +19,11 @@ public:
     void readSites();
     void printAllSites();
     void startingScreen();
-    // void createWebGraph();
+    void createWebGraph();
 
     sitevec getAllSites();
 
     string getTillChar(string &, char);
-    string getEmptyString();
 };
 
 #endif /*SCREEN_H*/
