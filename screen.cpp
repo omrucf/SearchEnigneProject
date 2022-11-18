@@ -56,6 +56,8 @@ void screen::startingScreen()
 
         cin >> choice;
 
+        clear();
+
         if (choice != '1' && choice != '2' && choice != '0')
             std::cout << "*INVALID INPUT*\n";
         else if (choice == '1')
@@ -67,7 +69,9 @@ void screen::startingScreen()
             // cin >> keywords;
 
             std::cout << "\nsearch type: ";
-            if (keywords.find(emptyString) != string::npos)
+            if (keywords.find(emptyString) != string::npos
+             ||
+              (keywords.find("AND") != string::npos))
             {
                 std::cout << "AND\n";
             }

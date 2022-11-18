@@ -4,6 +4,8 @@
 #include "webpage.h"
 #include <fstream>
 
+extern void clear();
+
 class screen
 {
     sitevec history;
