@@ -15,6 +15,8 @@ class screen
 
     string emptyString;
 
+    vector<vector<siteInfo>> adjList;
+
     // sites webgraph(edge, edges.size());
 public:
     screen();
@@ -27,6 +29,8 @@ public:
     sitevec getAllSites();
 
     string getTillChar(string &, char);
+
+    
 };
 
 #endif /*SCREEN_H*/

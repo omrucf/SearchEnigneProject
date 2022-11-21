@@ -2,6 +2,8 @@
 
 void clear();
 
+
+
 int main()
 {
     cout << "everything's fine..\n\n";
@@ -10,9 +12,9 @@ int main()
 
     s.startingScreen();
 
-    // s.createWebGraph();
+    s.createWebGraph();
 
-    // s.printEdgesvec();
+    s.printEdgesvec();
 
     return 0;
 }

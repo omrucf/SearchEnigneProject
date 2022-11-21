@@ -1,7 +1,7 @@
 #include "ReultsScreen.h"
 
-resultsScreen::resultsScreen(string keywords [], string Websites[])
+resultsScreen::resultsScreen(string keywordss [], string websitess[])
 {
-    this->websites = websites;
-    this->keywords = keywords;
+    this->websites = websitess;
+    this->keywords = keywordss;
 }

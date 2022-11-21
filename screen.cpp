@@ -66,8 +66,6 @@ void screen::startingScreen()
 
             getline(cin >> ws, keywords);
 
-            // cin >> keywords;
-
             std::cout << "\nsearch type: ";
             if (keywords.find(emptyString) != string::npos
              ||
@@ -121,6 +119,11 @@ void screen::createWebGraph()
         mainURL = getTillChar(input, ',');
 
         temp.src.url = mainURL;
+        temp.src.loc = count++;
+
+        adjList.resize(count);
+
+        adjList[count - 1].push_back(temp.src);
 
         while (!input.empty())
         {
@@ -129,6 +132,14 @@ void screen::createWebGraph()
 
             edges.push_back(temp);
         }
+        
+    }
+
+    adjList.resize(edges.size());
+
+    for(auto &edge: edges)
+    {
+        adjList[edge.src.loc].push_back(edge.dst);
     }
 }
 
@@ -154,9 +165,17 @@ string screen::getTillChar(string &word, char c)
 
 void screen::printEdgesvec()
 {
-    for (auto i = edges.begin(); i != edges.end(); i++)
+    cout << "\ngraph:\n";
+
+     for(int i = 0; i < edges.size(); i++)
     {
-        cout << "source: " << i->src.url << endl
-             << "destination: " << i->dst.url << endl << endl;
+        if(!adjList[i].empty())
+        {
+            for(siteInfo v: adjList[i])
+            {
+                cout << v.url << " --> ";
+            }
+            cout << "NULL" << endl;
+        }
     }
 }
