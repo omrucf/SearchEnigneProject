@@ -4,8 +4,6 @@
 void clear();
 string getTillChar(string &, char);
 
-
-
 int main()
 {
     cout << "everything's fine..\n\n";
@@ -18,7 +16,7 @@ int main()
 
     // s.printEdgesvec();
 
-    // hashtable test;
+    hashtable test;
 
     return 0;
 }

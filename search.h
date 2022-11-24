@@ -1,21 +1,20 @@
-#ifndef SEARCH_H
-#define SEARCH_H
+// #ifndef SEARCH_H
+// #define SEARCH_H
 
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <list>
-#include <unordered_map>
+// #include <iostream>
+// #include <vector>
+// #include <fstream>
 
-#include "webpage.h"
+// #include "hash.h"
 
-using namespace std;
+// using namespace std;
 
-unordered_map<string, siteInfo> WordInSite;
+// class search
+// {
+//     vector<node *> table;
 
-class search
-{
-    vector<list<siteInfo>> keywords;
-};
+// public:
+//     search();
+// };
 
-#endif /*SEARCH_H*/
+// #endif /*SEARCH_H*/
