@@ -4,9 +4,10 @@ int hashtable::hash(string key)
 {
     int sum = 0;
     for(int i = 0; i < key.length(); i++)
-        sum += (key[i] * pow(10, i));
+        sum += (key[i] * i);
 
-    return sum % KeyWords.size();
+    temp.push_back(sum);
+    return sum;
 }
 
 
@@ -75,7 +76,7 @@ vector<string> hashtable::KW()
             temp = getTillChar(input, ',');
 
             if(!contains(keywords, temp))
-                keywords.push_back(temp);
+                keywords.push_back(temp), cout << temp << endl;
         }
     }
 

@@ -26,7 +26,10 @@ private:
     vector<node *> table;
     vector<string> KeyWords;
     int hash(string);
+    
 public:
+
+vector<int>temp;
     hashtable();
 
     void insert(string, siteInfo);
