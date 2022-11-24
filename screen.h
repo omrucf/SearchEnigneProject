@@ -5,6 +5,7 @@
 #include <fstream>
 
 extern void clear();
+extern string getTillChar(string &, char);
 
 class screen
 {
@@ -20,6 +21,7 @@ class screen
     // sites webgraph(edge, edges.size());
 public:
     screen();
+
     void readSites();
     void printAllSites();
     void startingScreen();
@@ -28,7 +30,6 @@ public:
 
     sitevec getAllSites();
 
-    string getTillChar(string &, char);
 
     
 };
