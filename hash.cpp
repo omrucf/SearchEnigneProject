@@ -2,9 +2,11 @@
 
 int hashtable::hash(string key)
 {
+    for (int i = 0; i < key.length(); i++)
+        key[i] = toupper(key[i]);
     int sum = 0;
     for (int i = 0; i < key.length(); i++)
-        sum += (key[i] * i);
+        sum += (key[i] * (i + 1));
 
     return sum;
 }
@@ -148,7 +150,7 @@ vector<string> hashtable::getKeyWords()
 }
 
 
-// bool hashtable::operator<(const node &a, const node &b)
-// {
-//     return a.key < b.key;
-// }
+vector<node *> hashtable::getTable()
+{
+    return table;
+}

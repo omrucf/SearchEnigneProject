@@ -8,7 +8,7 @@
 #include <list>
 #include <algorithm>
 
-#include "webpage.h"
+#include "screen.h"
 
 using namespace std;
 
@@ -20,9 +20,14 @@ struct node
     siteInfo value;
     node *next;
 
-    bool operator<(const node &rhs) const
+public:
+    bool operator<(const node *&a)
     {
-        return key < rhs.key;
+        return key < a->key;
+    }
+    bool operator>(const node *&a)
+    {
+        return key > a->key;
     }
 };
 
@@ -43,16 +48,12 @@ public:
     int pos(int);
 
     bool contains(vector<string>, string);
-    // bool operator<(const node &, const node &);
-
-    // hashtable operator<(const node &a, const node &b)
-    // {
-    //     return a.key < b.key;
-    // }
 
     vector<string> KW();
 
     vector<string> getKeyWords();
+
+    vector<node *> getTable();
 };
 
 #endif /*HASH_H*/

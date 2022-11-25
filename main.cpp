@@ -1,8 +1,11 @@
 #include "screen.h"
 #include "hash.h"
+#include "search.h"
 
 void clear();
 string getTillChar(string &, char);
+
+vector<siteInfo> WebPages;
 
 int main()
 {
@@ -16,7 +19,22 @@ int main()
 
     // s.printEdgesvec();
 
-    hashtable test;
+    // hashtable test;
+
+    Search s;
+
+    cout << endl;
+
+
+    string temp;
+
+    // // cout << "please search: ";
+    // // getline(cin >> ws, temp);
+
+    temp = "omar yossuf";
+
+    s.ANDSearch(temp);
+
 
     return 0;
 }

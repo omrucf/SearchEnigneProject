@@ -8,38 +8,6 @@ screen::screen()
     emptyString[2] = '"';
 }
 
-void screen::readSites()
-{
-    ifstream in;
-
-    in.open("sites.txt");
-
-    siteInfo sites;
-
-    while (!in.eof())
-    {
-        in >> sites.loc >> sites.url;
-        getline(in, sites.KeyWords);
-
-        allsites.push_back(sites);
-    }
-
-    in.close();
-}
-
-void screen::printAllSites()
-{
-    readSites();
-
-    for (int i = 0; i < allsites.size(); i++)
-    {
-        std::cout << "site: " << allsites.at(i).loc << endl
-                  << "url: " << allsites.at(i).url << endl
-                  << "keywords: " << allsites.at(i).KeyWords << endl
-                  << endl;
-    }
-}
-
 void screen::startingScreen()
 {
     string keywords;
@@ -67,9 +35,8 @@ void screen::startingScreen()
             getline(cin >> ws, keywords);
 
             std::cout << "\nsearch type: ";
-            if (keywords.find(emptyString) != string::npos
-             ||
-              (keywords.find("AND") != string::npos))
+            if (keywords.find(emptyString) != string::npos ||
+                (keywords.find("AND") != string::npos))
             {
                 std::cout << "AND\n";
             }
@@ -132,12 +99,11 @@ void screen::createWebGraph()
 
             edges.push_back(temp);
         }
-        
     }
 
     adjList.resize(edges.size());
 
-    for(auto &edge: edges)
+    for (auto &edge : edges)
     {
         adjList[edge.src.loc].push_back(edge.dst);
     }
@@ -147,11 +113,11 @@ void screen::printEdgesvec()
 {
     cout << "\ngraph:\n";
 
-     for(int i = 0; i < edges.size(); i++)
+    for (int i = 0; i < edges.size(); i++)
     {
-        if(!adjList[i].empty())
+        if (!adjList[i].empty())
         {
-            for(siteInfo v: adjList[i])
+            for (siteInfo v : adjList[i])
             {
                 cout << v.url << " --> ";
             }
