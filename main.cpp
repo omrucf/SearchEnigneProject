@@ -5,15 +5,15 @@
 void clear();
 string getTillChar(string &, char);
 
-vector<siteInfo> WebPages;
+// vector<siteInfo> WebPages;
 
 int main()
 {
     cout << "everything's fine..\n\n";
 
-    // screen s;
+    screen s;
 
-    // s.startingScreen();
+    s.startingScreen();
 
     // s.createWebGraph();
 
@@ -21,19 +21,19 @@ int main()
 
     // hashtable test;
 
-    Search s;
+    // Search s;
 
-    cout << endl;
+    // cout << endl;
 
 
-    string temp;
+    // string temp;
 
-    // // cout << "please search: ";
-    // // getline(cin >> ws, temp);
+    // // // cout << "please search: ";
+    // // // getline(cin >> ws, temp);
 
-    temp = "omar yossuf";
+    // temp = "omar OR memes";
 
-    s.ANDSearch(temp);
+    // s.ORSearch(temp);
 
 
     return 0;

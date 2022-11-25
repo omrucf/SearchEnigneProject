@@ -12,17 +12,25 @@ void screen::startingScreen()
 {
     string keywords;
 
+    vector<string> output;
+
     char choice;
+    char choicee;
+
+    int i;
 
     std::cout << "Welcome!" << endl;
 
     do
     {
-        std::cout << "\nPlease choose from the following:" << endl
-                  << "1. New Search" << endl
-                  << "2. Exit" << endl;
+        if (choice != '1' && choice != '2')
+        {
+            std::cout << "\nPlease choose from the following:" << endl
+                      << "1. New Search" << endl
+                      << "2. Exit" << endl;
 
-        cin >> choice;
+            cin >> choice;
+        }
 
         clear();
 
@@ -34,36 +42,70 @@ void screen::startingScreen()
 
             getline(cin >> ws, keywords);
 
-            std::cout << "\nsearch type: ";
             if (keywords.find(emptyString) != string::npos ||
                 (keywords.find("AND") != string::npos))
             {
-                std::cout << "AND\n";
+                output = s.ANDSearch(keywords);
             }
             else if (keywords.find("OR") != string::npos)
             {
-                std::cout << "OR\n";
+                output = s.ORSearch(keywords);
             }
             else if (keywords[0] == '"' && keywords[keywords.size() - 1] == '"')
             {
-                std::cout << "quotations\n";
+                output = s.ORSearch(keywords);
             }
             else
             {
-                std::cout << "OR\n";
+                output = s.ORSearch(keywords);
             }
-            choice = '0';
+
+            do
+            {
+                choicee = 0;
+
+                cout << "select any website you want by typing its number: " << endl;
+
+                for (int j = 0; j < output.size(); j++)
+                    cout << j + 1 << ". " << output[j] << endl;
+
+                cout << "or type:\n(" << output.size() + 1 << ") New search\n(" << output.size() + 2 << ") Exit" << endl;
+
+                cin >> i;
+
+                if (i > 0 && i <= output.size())
+                {
+                    choicee = '0';
+                    clear();
+                    cout << "You are now viewing " << output[i - 1] << " !\n\n";
+
+                    cout << "Would you like to :\n1. Back to search results\n2. New search\n3. Exit\n\n";
+
+                    cin >> choicee;
+
+                    if(choicee != 1)
+                        choice = choicee - 1;
+
+                    clear();
+                }
+                else if (i == output.size() + 1)
+                    choice = '1';
+                else if (i == output.size() + 2)
+                    choice = '2';
+                else
+                    cout << "invlaid input!\nplease try again later!\n";
+            } while (choicee == '1');
         }
 
     } while (choice != '2');
 
-    std::cout << "\nThank You for chosing our search engin!\nGoodBye!\n";
+    std::cout << "\nThank You for using our search engin!\nGoodBye!\n";
 }
 
-sitevec screen::getAllSites()
-{
-    return allsites;
-}
+// sitevec screen::getAllSites()
+// {
+//     return allsites;
+// }
 
 void screen::createWebGraph()
 {
@@ -101,6 +143,8 @@ void screen::createWebGraph()
         }
     }
 
+    in.close();
+
     adjList.resize(edges.size());
 
     for (auto &edge : edges)
@@ -109,19 +153,19 @@ void screen::createWebGraph()
     }
 }
 
-void screen::printEdgesvec()
-{
-    cout << "\ngraph:\n";
+// void screen::printEdgesvec()
+// {
+//     cout << "\ngraph:\n";
 
-    for (int i = 0; i < edges.size(); i++)
-    {
-        if (!adjList[i].empty())
-        {
-            for (siteInfo v : adjList[i])
-            {
-                cout << v.url << " --> ";
-            }
-            cout << "NULL" << endl;
-        }
-    }
-}
+//     for (int i = 0; i < edges.size(); i++)
+//     {
+//         if (!adjList[i].empty())
+//         {
+//             for (siteInfo v : adjList[i])
+//             {
+//                 cout << v.url << " --> ";
+//             }
+//             cout << "NULL" << endl;
+//         }
+//     }
+// }

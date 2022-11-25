@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include "search.h"
 
 using namespace std;
 
@@ -27,8 +28,8 @@ extern string getTillChar(string &, char);
 
 class screen
 {
-    sitevec history;
-    sitevec allsites;
+    // sitevec history;
+    // sitevec allsites;
 
     vector<edge> edges;
 
@@ -36,15 +37,17 @@ class screen
 
     vector<vector<siteInfo>> adjList;
 
+    Search s;
+
     // sites webgraph(edge, edges.size());
 public:
     screen();
 
     void startingScreen();
     void createWebGraph();
-    void printEdgesvec();
+    // void printEdgesvec();
 
-    sitevec getAllSites();
+    // sitevec getAllSites();
 
 
     

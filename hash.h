@@ -1,59 +1,59 @@
-#ifndef HASH_H
-#define HASH_H
+// #ifndef HASH_H
+// #define HASH_H
 
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <cmath>
-#include <list>
-#include <algorithm>
+// #include <iostream>
+// #include <vector>
+// #include <fstream>
+// #include <cmath>
+// #include <list>
+// #include <algorithm>
 
-#include "screen.h"
+// #include "screen.h"
 
-using namespace std;
+// using namespace std;
 
-extern string getTillChar(string &, char);
+// extern string getTillChar(string &, char);
 
-struct node
-{
-    int key;
-    siteInfo value;
-    node *next;
+// struct node
+// {
+//     int key;
+//     siteInfo value;
+//     node *next;
 
-public:
-    bool operator<(const node *&a)
-    {
-        return key < a->key;
-    }
-    bool operator>(const node *&a)
-    {
-        return key > a->key;
-    }
-};
+// public:
+//     bool operator<(const node *&a)
+//     {
+//         return key < a->key;
+//     }
+//     bool operator>(const node *&a)
+//     {
+//         return key > a->key;
+//     }
+// };
 
-class hashtable
-{
-private:
-    vector<node *> table;
-    vector<string> KeyWords;
-    int hash(string);
+// class hashtable
+// {
+// private:
+//     vector<node *> table;
+//     vector<string> KeyWords;
+//     int hash(string);
 
-public:
-    hashtable();
+// public:
+//     hashtable();
 
-    void insert(string, string);
+//     void insert(string, string);
 
-    int getHash(string);
-    int partition(vector<node *>, int, int);
-    int pos(int);
+//     int getHash(string);
+//     int partition(vector<node *>, int, int);
+//     int pos(int);
 
-    bool contains(vector<string>, string);
+//     bool contains(vector<string>, string);
 
-    vector<string> KW();
+//     vector<string> KW();
 
-    vector<string> getKeyWords();
+//     vector<string> getKeyWords();
 
-    vector<node *> getTable();
-};
+//     vector<node *> getTable();
+// };
 
-#endif /*HASH_H*/
+// #endif /*HASH_H*/

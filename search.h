@@ -6,25 +6,25 @@
 #include <fstream>
 #include <set>
 
-#include "hash.h"
-#include "screen.h"
+// #include "hash.h"
+// #include "screen.h"
 
 using namespace std;
 
 
 
 extern string getTillChar(string &, char);
-extern vector<siteInfo> WebPages;
+// extern vector<siteInfo> WebPages;
 
 class Search
 {
-    vector<node *> table;
+    // vector<node *> table;
 public:
     Search();
 
-    void OneWordSearch(string);
-    void ANDSearch(string);
-    void ORSearch(string);
+    // void OneWordSearch(string);
+    vector<string> ANDSearch(string);
+    vector<string> ORSearch(string);
 
 
 };
