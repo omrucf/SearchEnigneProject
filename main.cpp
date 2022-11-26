@@ -39,10 +39,15 @@ int main()
     return 0;
 }
 
+// void clear()
+// {
+    // for(int i = 0; i < 100; i++)
+    // cout << endl;
+// }
+
 void clear()
 {
-    for(int i = 0; i < 100; i++)
-        cout << endl;
+   system("clear");
 }
 
 string getTillChar(string &word, char c)
