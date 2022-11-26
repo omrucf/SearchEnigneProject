@@ -99,6 +99,8 @@ void screen::startingScreen()
 
     } while (choice != '2');
 
+    clear();
+
     std::cout << "\nThank You for using our search engin!\nGoodBye!\n";
 }
 
